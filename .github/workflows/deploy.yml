@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7.4'
+          bundler-cache: true
+
+      - name: Build
+        env:
+          IS_BASE_REPO: ${{ contains(fromJSON('["SAP-docs/preview.developer.concur.com","SAP-docs/developer.concur.com"]'), github.repository) }}
+        run: |
+          if [ "$IS_BASE_REPO" = "true" ]; then
+            bundle exec jekyll build
+          else
+            echo "url: \"https://${{ github.repository_owner }}.github.io\"" > _config_fork.yml
+            bundle exec jekyll build --config _config.yml,_config_fork.yml --baseurl "/${{ github.event.repository.name }}"
+          fi
+
+      - name: Place CNAME
+        if: contains(fromJSON('["SAP-docs/preview.developer.concur.com","SAP-docs/developer.concur.com"]'), github.repository)
+        run: echo "${{ github.event.repository.name }}" > _site/CNAME
+
+      - name: Disable Jekyll on GitHub Pages
+        run: touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
