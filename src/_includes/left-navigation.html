@@ -36,7 +36,7 @@ Loop through the items in the YAML and build the navigation bar.
 
   {% if item.children == nil or item.children == empty %}
     <li class="list-group-item {% if item.url == page.url %}active{% endif %}">
-      <a href="{{ item.url }}">{{ item.title }}</a>
+      <a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
     </li>
 
   {% else %}
@@ -60,7 +60,7 @@ Loop through the items in the YAML and build the navigation bar.
       <ul id="collapse-{{ item.title | slugify }}" class="collapse {% if active_item %}in{% endif %}">
         {% for child in item.children %}
           <li {% if child.url == page.url %} class="active" {% endif %}>
-            <a href="{{ child.url }}">{{ child.title }}</a>
+            <a href="{{ site.baseurl }}{{ child.url }}">{{ child.title }}</a>
           </li>
         {% endfor %}
       </ul>

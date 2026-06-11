@@ -15,7 +15,7 @@ layout: default
 <div class="breadcrumbs">
   <div class="container">
     <h1 class="pull-left">
-      <a href="/{{ path }}">{{ page_title }}</a>
+      <a href="{{ site.baseurl }}/{{ path }}">{{ page_title }}</a>
       {% if page.title %} | <a href="{{ page.url }}">{{ page.title }}</a>{% endif %}
     </h1>
   </div>
@@ -36,9 +36,9 @@ layout: default
                   <i class="fas fa-tags" aria-hidden="true"></i>&nbsp;
                   {% for tag in post.tags %}
                     {% if forloop.last %}
-                      <span class="navtags"><a href="/blog/tag/{{ tag }}">{{ tag | replace: "-", " " }}</a></span>
+                      <span class="navtags"><a href="{{ site.baseurl }}/blog/tag/{{ tag }}">{{ tag | replace: "-", " " }}</a></span>
                     {% else %}
-                      <span class="navtags"><a href="/blog/tag/{{ tag }}">{{ tag | replace: "-", " " }}, </a></span>
+                      <span class="navtags"><a href="{{ site.baseurl }}/blog/tag/{{ tag }}">{{ tag | replace: "-", " " }}, </a></span>
                     {% endif %}
                   {% endfor %}
                   <br>
@@ -54,11 +54,11 @@ layout: default
           {% endfor %}
           {% if page_title == 'Developer Blog' %}
           <div>
-            <h4><a href="/{{ path }}/tags">Posts By Tag</a></h4>
+            <h4><a href="{{ site.baseurl }}/{{ path }}/tags">Posts By Tag</a></h4>
           </div>
           {% endif %}
           <div>
-            <h4><a href="/{{ path }}/archives.html">Archives</a></h4>
+            <h4><a href="{{ site.baseurl }}/{{ path }}/archives.html">Archives</a></h4>
           </div>
           {% if page_title == 'Developer Blog' %}
           <div>
