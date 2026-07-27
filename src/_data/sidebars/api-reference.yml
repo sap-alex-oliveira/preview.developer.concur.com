@@ -130,8 +130,6 @@
 - title: Expense v1
   url: ''
   children:
-      - title: Company Card Transactions v1.1
-        url: /api-reference/expense/expense-report/company-card-transaction-resource.html
       - title: Expense Delegators v1.1
         url: /api-reference/expense/expense-report/expense-delegators.html
       - title: Expense Form Field v1.1
@@ -229,6 +227,8 @@
         url: /api-reference/invoice/v3.sales-tax-validation.html
       - title: Vendor v3.1
         url: /api-reference/invoice/v3.1.vendor.html
+- title: Legal Entity v4.1
+  url: /api-reference/legal-entity/v4.1.legal-entity.html
 - title: Quick Expense v4
   url: /api-reference/expense/quick-expense/v4.quick-expense.html
 - title: Receipts

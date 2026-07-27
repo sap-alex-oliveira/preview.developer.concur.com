@@ -6,6 +6,7 @@ layout: reference
 
 ## Developer Platform Release Notes
 
+* [July 2026](./api/2026-07-01.html)
 * [June 2026](./api/2026-06-03.html)
 * [May 2026](./api/2026-05-04.html)
 * [April 2026](./api/2026-04-06.html)
@@ -37,6 +38,7 @@ layout: reference
 
 ## App Center Release Notes
 
+* [2026 Release Notes](./app-center/2026-app-center.html)
 * [2025 Release Notes](./app-center/2025-app-center.html)
 * [2024 Release Notes](./app-center/2024-app-center.html)
 * [2023 Release Notes](./app-center/2023-app-center.html)
